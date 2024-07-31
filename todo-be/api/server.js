@@ -4,7 +4,6 @@ const app = express();
 const mongoose = require("mongoose");
 const TodoSchema = require("../models/todo-model");
 const cors = require("cors");
-const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use(express.static("public"));
 // app.use(cors({ origin: "*" }));
@@ -36,6 +35,7 @@ app.post("/addTodo", async (req, res) => {
     return res.json(await TodoSchema.find());
   } catch (error) {
     console.log(error.message);
+    res.status(500).send("Server error");
   }
 });
 
@@ -44,6 +44,7 @@ app.get("/todoList", async (req, res) => {
     return res.json(await TodoSchema.find());
   } catch (error) {
     console.log(error.message);
+    res.status(500).send("Server error");
   }
 });
 
@@ -53,6 +54,7 @@ app.put("/editTodo/:id", async (req, res) => {
     return res.json(await TodoSchema.find());
   } catch (error) {
     console.log(error.message);
+    res.status(500).send("Server error");
   }
 });
 
@@ -62,8 +64,11 @@ app.delete("/deleteTodo/:id", async (req, res) => {
     return res.json(await TodoSchema.find());
   } catch (error) {
     console.log(error.message);
+    res.status(500).send("Server error");
   }
 });
+
+const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
   console.log(`server running on port ${port}...`);
