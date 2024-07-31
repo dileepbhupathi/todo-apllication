@@ -8,17 +8,13 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://todo-apllication-web.vercel.app" || "*"],
+    origin: ["https://todo-apllication-web.vercel.app"],
   }),
 );
 
 mongoose
   .connect(
     "mongodb+srv://dileepbhupathi97:Dileep97@cluster0.znmqgls.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    },
   )
   .then(() => console.log("DB connected..."))
   .catch((error) => console.log("DB connection error:", error));
