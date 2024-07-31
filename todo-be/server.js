@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-const TodoSchema = require("../models/todo-model");
+const TodoSchema = require("./models/todo-model");
 const cors = require("cors");
 
 const app = express();
@@ -68,5 +68,3 @@ const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}...`);
 });
-
-module.exports = app; // Export the app to be used by Vercel's serverless function

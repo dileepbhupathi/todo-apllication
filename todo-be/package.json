@@ -2,10 +2,10 @@
   "name": "todo-application",
   "version": "1.0.0",
   "description": "todo application server",
-  "main": "api/server.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node api/server.js",
-    "server": "nodemon api/server.js"
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "author": "Dileep",
   "license": "ISC",
