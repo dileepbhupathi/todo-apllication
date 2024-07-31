@@ -7,7 +7,7 @@ export const Todo = ({ todoList, handleTodoList }) => {
   console.log(todoList);
   const handleDelete = (id) => {
     axios
-      .delete(`https://todo-apllication-server.vercel.app/deleteTodo/${id}`)
+      .delete(process.env.REACT_APP_API_BASE_URL + `/deleteTodo/${id}`)
       .then(() => {
         handleTodoList();
       });

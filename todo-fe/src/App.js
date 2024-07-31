@@ -7,9 +7,10 @@ import { useEffect, useState } from "react";
 function App() {
   const [form] = Form.useForm();
   const [todoList, setTodoList] = useState([]);
+  console.log(process.env.REACT_APP_API_BASE_URL);
   const handleTodoList = async () => {
     await axios
-      .get("https://todo-apllication-server.vercel.app/todoList")
+      .get(process.env.REACT_APP_API_BASE_URL + "/todoList")
       .then((res) => setTodoList(res?.data));
   };
   useEffect(() => {
@@ -20,7 +21,7 @@ function App() {
       todo: values.name,
     };
     axios
-      .post("https://todo-apllication-server.vercel.app/addTodo", payload)
+      .post(process.env.REACT_APP_API_BASE_URL + "/addTodo", payload)
       .then(() => {
         form.resetFields();
         handleTodoList();
