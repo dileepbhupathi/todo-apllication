@@ -1,8 +1,8 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const TodoSchema = require("./models/todo-model");
+const TodoSchema = require("../models/todo-model");
 const cors = require("cors");
 const port = process.env.PORT || 8000;
 app.use(express.json());
