@@ -1,14 +1,12 @@
 {
-  "name": "todo-application",
+  "name": "my-backend",
   "version": "1.0.0",
-  "description": "todo application server",
-  "main": "server.js",
+  "description": "A simple backend for todo application",
+  "main": "api/server.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "start": "node api/server.js",
+    "dev": "nodemon api/server.js"
   },
-  "author": "Dileep",
-  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
