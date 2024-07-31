@@ -21,7 +21,7 @@ function App() {
       todo: values.name,
     };
     axios
-      .post("https://todo-apllication.vercel.app/addTodo", payload)
+      .post(process.env.REACT_APP_API_BASE_URL + "/addTodo", payload)
       .then(() => {
         form.resetFields();
         handleTodoList();
