@@ -9,7 +9,7 @@ function App() {
   const [todoList, setTodoList] = useState([]);
   const handleTodoList = async () => {
     await axios
-      .get(process.env.REACT_APP_API_BASE_URL + "/todoList")
+      .get("https://todo-apllication-server.vercel.app/todoList")
       .then((res) => setTodoList(res?.data));
   };
   useEffect(() => {
@@ -20,7 +20,7 @@ function App() {
       todo: values.name,
     };
     axios
-      .post(process.env.REACT_APP_API_BASE_URL + "/addTodo", payload)
+      .post("https://todo-apllication-server.vercel.app/addTodo", payload)
       .then(() => {
         form.resetFields();
         handleTodoList();
