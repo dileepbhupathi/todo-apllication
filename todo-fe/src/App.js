@@ -10,13 +10,12 @@ function App() {
   const handleTodoList = async () => {
     await axios
       .get(process.env.REACT_APP_API_BASE_URL + "/todoList")
-      .then((res) => setTodoList(res.data));
+      .then((res) => setTodoList(res?.data));
   };
   useEffect(() => {
     handleTodoList();
   }, []);
   const handleSubmit = (values) => {
-    console.log(values);
     const payload = {
       todo: values.name,
     };

@@ -5,7 +5,6 @@ import "./todo.css";
 
 export const Todo = ({ todoList, handleTodoList }) => {
   const handleDelete = (id) => {
-    console.log(id);
     axios
       .delete(process.env.REACT_APP_API_BASE_URL + `/deleteTodo/${id}`)
       .then(() => {
@@ -14,7 +13,7 @@ export const Todo = ({ todoList, handleTodoList }) => {
   };
   return (
     <div className="todo-list">
-      {todoList.map((todo) => (
+      {todoList?.map((todo) => (
         <div key={todo?._id} className="todo-item">
           <p>{todo?.todo}</p>
           <Button onClick={() => handleDelete(todo?._id)}>Delete</Button>
