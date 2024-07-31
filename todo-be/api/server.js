@@ -1,24 +1,22 @@
 require("dotenv").config();
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
 const TodoSchema = require("../models/todo-model");
 const cors = require("cors");
+
+const app = express();
 app.use(express.json());
-app.use(express.static("public"));
-// app.use(cors({ origin: "*" }));
 app.use(
   cors({
     origin: "*",
-    methods: ["Get", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
 );
+
 mongoose
   .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log("DB connected...");
-  })
+  .then(() => console.log("DB connected..."))
   .catch((error) => console.log(error));
 
 app.get("/", (req, res) => {
@@ -28,9 +26,7 @@ app.get("/", (req, res) => {
 app.post("/addTodo", async (req, res) => {
   const { todo } = req.body;
   try {
-    const newData = new TodoSchema({
-      todo: todo,
-    });
+    const newData = new TodoSchema({ todo });
     await newData.save();
     return res.json(await TodoSchema.find());
   } catch (error) {
@@ -67,9 +63,10 @@ app.delete("/deleteTodo/:id", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
-
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
-  console.log(`server running on port ${port}...`);
+  console.log(`Server running on port ${port}...`);
 });
+
+module.exports = app; // Export the app to be used by Vercel's serverless function
