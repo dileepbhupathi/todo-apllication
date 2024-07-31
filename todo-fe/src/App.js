@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [form] = Form.useForm();
   const [todoList, setTodoList] = useState([]);
-  console.log(process.env.REACT_APP_API_BASE_URL);
+  console.log("env", process.env.REACT_APP_API_BASE_URL);
   const handleTodoList = async () => {
     await axios
       .get(process.env.REACT_APP_API_BASE_URL + "/todoList")
