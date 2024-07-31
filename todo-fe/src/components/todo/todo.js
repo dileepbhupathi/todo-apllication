@@ -6,9 +6,11 @@ import "./todo.css";
 export const Todo = ({ todoList, handleTodoList }) => {
   const handleDelete = (id) => {
     console.log(id);
-    axios.delete(`http://localhost:8000/deleteTodo/${id}`).then(() => {
-      handleTodoList();
-    });
+    axios
+      .delete(`https://todo-apllication.vercel.app/deleteTodo/${id}`)
+      .then(() => {
+        handleTodoList();
+      });
   };
   return (
     <div className="todo-list">
