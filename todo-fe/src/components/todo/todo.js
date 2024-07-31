@@ -4,6 +4,7 @@ import React from "react";
 import "./todo.css";
 
 export const Todo = ({ todoList, handleTodoList }) => {
+  console.log(todoList);
   const handleDelete = (id) => {
     axios
       .delete(process.env.REACT_APP_API_BASE_URL + `/deleteTodo/${id}`)
