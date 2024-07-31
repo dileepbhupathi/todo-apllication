@@ -1,14 +1,22 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const TodoSchema = require("./models/todo-model");
 const cors = require("cors");
+const port = process.env.PORT || 8000;
 app.use(express.json());
-app.use(cors({ origin: "*" }));
+app.use(express.static("public"));
+// app.use(cors({ origin: "*" }));
+app.use(
+  cors({
+    origin: "*",
+    methods: ["Get", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }),
+);
 mongoose
-  .connect(
-    "mongodb+srv://dileepbhupathi97:Dileep97@cluster0.znmqgls.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("DB connected...");
   })
@@ -57,6 +65,6 @@ app.delete("/deleteTodo/:id", async (req, res) => {
   }
 });
 
-app.listen(8000, () => {
-  console.log("server running...");
+app.listen(port, () => {
+  console.log(`server running on port ${port}...`);
 });
