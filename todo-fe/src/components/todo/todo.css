@@ -1,0 +1,9 @@
+.todo-list {
+    text-align: left;
+  }
+  .todo-item {
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+  }
+  
