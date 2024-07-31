@@ -6,11 +6,7 @@ const Todo = require("../models/todo-model");
 
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["https://todo-apllication-web.vercel.app" || "*"],
-  }),
-);
+app.use(cors());
 
 mongoose
   .connect(
