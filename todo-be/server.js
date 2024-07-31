@@ -8,12 +8,12 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "*",
+    origin: process.env.CORS_ALLOWED_ORIGIN || "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
 );
-
+app.use(express.static("public"));
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => console.log("DB connected..."))
