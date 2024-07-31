@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.CORS_ALLOWED_ORIGIN || "*",
+    origin: ["https://todo-apllication-web.vercel.app" || "*"],
   }),
 );
 
