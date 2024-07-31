@@ -14,9 +14,9 @@ mongoose
   })
   .catch((error) => console.log(error));
 
-// app.get("/", (req, res) => {
-//   res.send("Hello Dileep !!!");
-// });
+app.get("/", (req, res) => {
+  res.send("Hello Dileep !!!");
+});
 
 app.post("/addTodo", async (req, res) => {
   const { todo } = req.body;
